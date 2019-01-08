@@ -11,14 +11,14 @@ const palette = document.querySelector('.js-color-palette');
 // ----- Helper Functions ------------------->>
 
 
-const canvasSection = (canvIndex, color, squareIndex) => {
+const canvasSection = (sectionNum, color, squareIndex) => {
     let section = ``;
 
     for (let i = 0; i < 10; i++) {
         if (i === squareIndex) {
-            section += `<div class='col bg-${color} border border-dark' style='height: 60px; width: 100px' data-index=${i}></div>`
+            section += `<div class='col bg-${color} border border-dark js-block' style='height: 60px; width: 100px' data-col=${sectionNum} data-index=${i}></div>`
         } else {
-            section += `<div class='col border border-dark' style='height: 60px; width: 100px' data-index=${i}></div>`
+            section += `<div class='col border border-dark js-block' style='height: 60px; width: 100px' data-col=${sectionNum} data-index=${i}></div>`
         }
     };
 
@@ -29,7 +29,16 @@ const canvasSection = (canvIndex, color, squareIndex) => {
 
 // ------ Events ----------------->>>
 
-//
+// canvas listener
+
+canvas.addEventListener('touchstart', e => {
+
+    if (e.target.matches('.js-block')) {
+        const col = e.target.getAttribute('data-col')
+        const block = e.target.getAttribute('data-index')
+    }
+});
+
 
 
 // color selection
@@ -81,7 +90,7 @@ const render = (state) => {
         innerHTML += `
         <div class='row js-section' data-cIndex=${i}>
         <div class='col ' style='height: 60px; width: 100px'></div>
-        ${canvasSection()}
+        ${canvasSection(i)}
         <div class='col ' style='height: 60px; width: 100px'></div>
         </div>
         `
