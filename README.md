@@ -1,7 +1,7 @@
 # Color Block
 
 Saw someone on the train with a coloring app, wanted to mimic the effects via a simple web app.
-* **Deployment** - *ToDo* - [URL](https://fiveeightyeight.github.io/colorBlock/)
+* **Deployment** - *Color Block* - [URL](https://fiveeightyeight.github.io/colorBlock/)
 
 ## Getting Started
 
