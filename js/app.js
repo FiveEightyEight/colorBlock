@@ -57,7 +57,7 @@ const canvasSection = (sectionNum, currentSection) => {
     let section = ``;
     for (let i = 0; i < keys.length; i++) {
         const current = currentSection[keys[i]];
-            section += `<div class='col bg-${current.color} border border-dark js-block' style='height: 60px; width: 100px' data-col=${sectionNum} data-index=${i}></div>`
+            section += `<div class='col bg-${current.color} js-block' style='height: 60px; width: 100px' data-col=${sectionNum} data-index=${i}></div>`
     };
     return section;
 };
