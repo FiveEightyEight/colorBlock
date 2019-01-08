@@ -31,6 +31,11 @@ TBD
 * **Robert Abreu** - *APE* - [FiveEightyEight](https://github.com/FiveEightyEight)
 
 
+## To Do
+
+* Enable Manual Scroll
+
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
