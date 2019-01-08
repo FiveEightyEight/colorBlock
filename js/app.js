@@ -78,10 +78,53 @@ canvas.addEventListener('touchstart', e => {
     }
 });
 
+canvas.addEventListener('touchmove', e => {
+
+    if (e.target.matches('.js-block')) {
+        const col = e.target.getAttribute('data-col')
+        const block = e.target.getAttribute('data-index')
+        state.canvas[col][block].color = state.color;
+        render(state);
+    }
+});
+
+canvas.addEventListener('click', e => {
+
+    if (e.target.matches('.js-block')) {
+        const col = e.target.getAttribute('data-col')
+        const block = e.target.getAttribute('data-index')
+        state.canvas[col][block].color = state.color;
+        render(state);
+    }
+});
+
+
 
 
 // color selection
 palette.addEventListener('touchstart', e => {
+    if (e.target.matches('.js-primary')) {
+        state.color = 'primary';
+    } else if (e.target.matches('.js-secondary')) {
+        state.color = 'secondary';
+    } else if (e.target.matches('.js-success')) {
+        state.color = 'success';
+    } else if (e.target.matches('.js-danger')) {
+        state.color = 'danger';
+    } else if (e.target.matches('.js-white')) {
+        state.color = 'white';
+    } else if (e.target.matches('.js-warning')) {
+        state.color = 'warning';
+    } else if (e.target.matches('.js-light')) {
+        state.color = 'light';
+    } else if (e.target.matches('.js-dark')) {
+        state.color = 'dark';
+    } else if (e.target.matches('.js-info')) {
+        state.color = 'info';
+    }
+});
+
+palette.addEventListener('click', e => {
     if (e.target.matches('.js-primary')) {
         state.color = 'primary';
     } else if (e.target.matches('.js-secondary')) {
