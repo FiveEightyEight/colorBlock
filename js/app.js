@@ -10,18 +10,55 @@ const palette = document.querySelector('.js-color-palette');
 
 // ----- Helper Functions ------------------->>
 
+const canvasGrid = () => {
+    const arr = []
+    for (let i = 0; i < 20; i++) {
+        arr.push({
+            0: {
+                color: 'white',
+            },
+            1: {
+                color: 'white',
+            },
+            2: {
+                color: 'white',
+            },
+            3: {
+                color: 'white',
+            },
+            4: {
+                color: 'white',
+            },
+            5: {
+                color: 'white',
+            },
+            6: {
+                color: 'white',
+            },
+            7: {
+                color: 'white',
+            },
+            8: {
+                color: 'white',
+            },
+            9: {
+                color: 'white',
+            },
 
-const canvasSection = (sectionNum, color, squareIndex) => {
-    let section = ``;
-
-    for (let i = 0; i < 10; i++) {
-        if (i === squareIndex) {
-            section += `<div class='col bg-${color} border border-dark js-block' style='height: 60px; width: 100px' data-col=${sectionNum} data-index=${i}></div>`
-        } else {
-            section += `<div class='col border border-dark js-block' style='height: 60px; width: 100px' data-col=${sectionNum} data-index=${i}></div>`
-        }
+        });
     };
 
+    return arr;
+};
+
+
+const canvasSection = (sectionNum, currentSection) => {
+    const keys = Object.keys(currentSection);
+    let section = ``;
+    for (let i = 0; i < keys.length; i++) {
+        const current = currentSection[keys[i]];
+            section += `<div class='col bg-${current.color} border border-dark js-block' style='height: 60px; width: 100px' data-col=${sectionNum} data-index=${i}></div>`
+    };
     return section;
 };
 
@@ -36,6 +73,8 @@ canvas.addEventListener('touchstart', e => {
     if (e.target.matches('.js-block')) {
         const col = e.target.getAttribute('data-col')
         const block = e.target.getAttribute('data-index')
+        state.canvas[col][block].color = state.color;
+        render(state);
     }
 });
 
@@ -86,18 +125,19 @@ const render = (state) => {
 
     let innerHTML = ``;
 
-    for (let i = 0; i < 15; i ++) {
+    for (let i = 0; i < state.canvas.length; i++) {
+        const currentSection = state.canvas[i];
         innerHTML += `
         <div class='row js-section' data-cIndex=${i}>
         <div class='col ' style='height: 60px; width: 100px'></div>
-        ${canvasSection(i)}
+        ${canvasSection(i, currentSection)}
         <div class='col ' style='height: 60px; width: 100px'></div>
         </div>
         `
     };
 
     canvas.innerHTML = innerHTML;
-    
-};
 
+};
+state.canvas = canvasGrid();
 render(state);
