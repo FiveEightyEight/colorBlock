@@ -3,18 +3,36 @@
 
 // ------ Global Variables ----->>>
 
-const canvas = document.querySelector('.js-body');
+const canvas = document.querySelector('.js-canvas');
 const palette = document.querySelector('.js-color-palette');
 
 
 
-// ----- Functions ------------------->>
+// ----- Helper Functions ------------------->>
 
+
+const canvasSection = (canvIndex, color, squareIndex) => {
+    let section = ``;
+
+    for (let i = 0; i < 10; i++) {
+        if (i === squareIndex) {
+            section += `<div class='col bg-${color} border border-dark' style='height: 60px; width: 100px' data-index=${i}></div>`
+        } else {
+            section += `<div class='col border border-dark' style='height: 60px; width: 100px' data-index=${i}></div>`
+        }
+    };
+
+    return section;
+};
 
 
 
 // ------ Events ----------------->>>
 
+//
+
+
+// color selection
 palette.addEventListener('touchstart', e => {
     if (e.target.matches('.js-primary')) {
         state.color = 'primary';
@@ -57,11 +75,20 @@ let state = {
 
 const render = (state) => {
 
+    let innerHTML = ``;
 
-    if (state.canvas > 0) {
+    for (let i = 0; i < 15; i ++) {
+        innerHTML += `
+        <div class='row js-section' data-cIndex=${i}>
+        <div class='col ' style='height: 60px; width: 100px'></div>
+        ${canvasSection()}
+        <div class='col ' style='height: 60px; width: 100px'></div>
+        </div>
+        `
+    };
 
-
-
-    }
-
+    canvas.innerHTML = innerHTML;
+    
 };
+
+render(state);
