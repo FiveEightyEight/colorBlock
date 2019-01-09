@@ -66,7 +66,7 @@ const scrl = (function () {
 
 const canvasGrid = () => {
     const arr = []
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 500; i++) {
         arr.push({
             0: {
                 color: 'white',
@@ -117,7 +117,7 @@ const canvasSection = (sectionNum, currentSection) => {
     let section = ``;
     for (let i = 0; i < keys.length; i++) {
         const current = currentSection[keys[i]];
-        section += `<div class='col bg-${current.color} js-block' style='height: 60px; width: 100px' data-col=${sectionNum} data-index=${i}></div>`
+        section += `<div class='col bg-${current.color} js-block' style='height: 20px; width: 20px' data-col=${sectionNum} data-index=${i}></div>`
     };
     return section;
 };
