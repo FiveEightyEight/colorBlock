@@ -44,7 +44,60 @@ const canvasGrid = () => {
             9: {
                 color: 'white',
             },
-
+            10: {
+                color: 'white',
+            },
+            11: {
+                color: 'white',
+            },
+            12: {
+                color: 'white',
+            },
+            13: {
+                color: 'white',
+            },
+            14: {
+                color: 'white',
+            },
+            15: {
+                color: 'white',
+            },
+            16: {
+                color: 'white',
+            },
+            17: {
+                color: 'white',
+            },
+            18: {
+                color: 'white',
+            },
+            19: {
+                color: 'white',
+            },
+            20: {
+                color: 'white',
+            },
+            21: {
+                color: 'white',
+            },
+            22: {
+                color: 'white',
+            },
+            23: {
+                color: 'white',
+            },
+            24: {
+                color: 'white',
+            },
+            25: {
+                color: 'white',
+            },
+            26: {
+                color: 'white',
+            },
+            27: {
+                color: 'white',
+            },
         });
     };
 

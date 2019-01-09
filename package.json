@@ -1,0 +1,21 @@
+{
+  "name": "color_block",
+  "version": "1.0.0",
+  "description": "Saw someone on the train with a coloring app, wanted to mimic the effects via a simple web app. * **Deployment** - *Color Block* - [URL](https://fiveeightyeight.github.io/colorBlock/)",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FiveEightyEight/colorBlock.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FiveEightyEight/colorBlock/issues"
+  },
+  "homepage": "https://github.com/FiveEightyEight/colorBlock#readme"
+}
