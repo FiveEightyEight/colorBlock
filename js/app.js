@@ -5,13 +5,15 @@
 
 const canvas = document.querySelector('.js-canvas');
 const palette = document.querySelector('.js-color-palette');
+const topNav = document.querySelector('.js-nav');
+
 
 
 
 // --- Legacy code ------->>>
- // StackOverflow: gblazex 
+// StackOverflow: gblazex 
 
-const scroll = (function () {
+const scrl = (function () {
     const keys = {
         37: 1,
         38: 1,
@@ -42,7 +44,7 @@ const scroll = (function () {
         document.onkeydown = preventDefaultForScrollKeys;
     }
 
-    const  enableScroll = () => {
+    const enableScroll = () => {
         if (window.removeEventListener)
             window.removeEventListener('DOMMouseScroll', preventDefault, false);
         window.onmousewheel = document.onmousewheel = null;
@@ -102,54 +104,7 @@ const canvasGrid = () => {
             11: {
                 color: 'white',
             },
-            12: {
-                color: 'white',
-            },
-            13: {
-                color: 'white',
-            },
-            14: {
-                color: 'white',
-            },
-            15: {
-                color: 'white',
-            },
-            16: {
-                color: 'white',
-            },
-            17: {
-                color: 'white',
-            },
-            18: {
-                color: 'white',
-            },
-            19: {
-                color: 'white',
-            },
-            20: {
-                color: 'white',
-            },
-            21: {
-                color: 'white',
-            },
-            22: {
-                color: 'white',
-            },
-            23: {
-                color: 'white',
-            },
-            24: {
-                color: 'white',
-            },
-            25: {
-                color: 'white',
-            },
-            26: {
-                color: 'white',
-            },
-            27: {
-                color: 'white',
-            },
+
         });
     };
 
@@ -175,7 +130,9 @@ const canvasSection = (sectionNum, currentSection) => {
 
 canvas.addEventListener('touchstart', e => {
 
+    if(!state.color) return;
     if (e.target.matches('.js-block')) {
+        // scrl.disableScroll();
         const col = e.target.getAttribute('data-col')
         const block = e.target.getAttribute('data-index')
         state.canvas[col][block].color = state.color;
@@ -185,7 +142,9 @@ canvas.addEventListener('touchstart', e => {
 
 canvas.addEventListener('touchmove', e => {
 
+    if(!state.color) return;
     if (e.target.matches('.js-block')) {
+        // scrl.disableScroll();
         const col = e.target.getAttribute('data-col')
         const block = e.target.getAttribute('data-index')
         state.canvas[col][block].color = state.color;
@@ -195,12 +154,52 @@ canvas.addEventListener('touchmove', e => {
 
 canvas.addEventListener('click', e => {
 
+    if(!state.color) return;
     if (e.target.matches('.js-block')) {
+        // scrl.disableScroll();
         const col = e.target.getAttribute('data-col')
         const block = e.target.getAttribute('data-index')
         state.canvas[col][block].color = state.color;
         render(state);
     }
+});
+
+// scroll disable
+topNav.addEventListener('click', e => {
+
+
+    // going off
+
+    if (e.target.matches('.js-on')) {
+        state.scroll = false;
+        scrl.disableScroll();
+        render(state);
+    } else if (e.target.matches('.js-off')) {
+
+        // going on
+        state.scroll = true;
+        state.color = false;
+        scrl.enableScroll();
+        render(state);
+    }
+});
+
+
+
+
+window.addEventListener('click', e => {
+    if (e.target.matches('.js-scroll')) {
+        // scrl.enableScroll();
+
+
+        // enableScroll();
+    } else {
+        // scrl.disableScroll();
+
+
+        // disableScroll();
+    }
+
 });
 
 
@@ -259,6 +258,7 @@ palette.addEventListener('click', e => {
 
 let state = {
 
+    scroll: true,
     active: false,
     color: '',
     canvas: [],
@@ -270,6 +270,18 @@ let state = {
 // ------ Render ----------------->>>
 
 const render = (state) => {
+    
+    if(state.scroll) {
+        topNav.innerHTML = `
+        <span class='h2 text-light mt-2 mr-2'>Scroll: </span>
+        <button type="button" class="p-2 btn btn-danger js-on"><strong class='js-on'>ON</strong></button>
+        `;
+    } else {
+        topNav.innerHTML = `
+        <span class='h2 text-light mt-2 mr-2'>Scroll: </span>
+        <button type="button" class="p-2 btn btn-warning js-off"><strong class='js-off'>OFF</strong></button>
+        `;
+    }
 
     let innerHTML = ``;
 
@@ -277,9 +289,9 @@ const render = (state) => {
         const currentSection = state.canvas[i];
         innerHTML += `
         <div class='row js-section' data-cIndex=${i}>
-        <div class='col ' style='height: 60px; width: 100px'></div>
+
         ${canvasSection(i, currentSection)}
-        <div class='col ' style='height: 60px; width: 100px'></div>
+
         </div>
         `
     };

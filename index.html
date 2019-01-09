@@ -12,8 +12,15 @@
 </head>
 
 <body>
+
+    <nav class="navbar fixed-top navbar-light bg-dark">
+        <section class='col-12 d-flex justify-content-center js-nav'>
+            <span class='h2 text-light mt-2 mr-2'>Scroll: </span>
+            <button type="button" class="p-2 btn btn-danger js-on"><strong class='js-on'>ON</strong></button>
+        </section>
+    </nav>
     <div class='row'>
-        <div class='col border border-light js-scroll'></div>
+        <div class='col border border-light mr-1 js-scroll'></div>
         <div class='col-10 js-canvas'>
             <div class='row js-body'>
                 <div class='col ' style='height: 60px; width: 100px'></div>
@@ -46,7 +53,7 @@
                 <div class='col ' style='height: 60px; width: 100px'></div>
             </div>
         </div>
-        <div class='col border border-light js-scroll'></div>
+        <div class='col border border-light ml-1 js-scroll'></div>
     </div>
 
     <nav class="navbar fixed-bottom navbar-light bg-dark">
